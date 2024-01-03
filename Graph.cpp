@@ -14,8 +14,15 @@ public:
         this->V = V;
     }
 
-    void addEdge(T src, T dest) {
-        this->adjList[src].push_back(dest);
+    void addEdge(T src, T dest, bool directed) {
+        if(directed)
+        {
+            this->adjList[src].push_back(dest);
+        }else
+        {
+            this->adjList[src].push_back(dest);
+            this->adjList[dest].push_back(src);
+        }
     }
 
     void bfs(T src) {
@@ -56,26 +63,26 @@ public:
     }
 };
 
+Graph<string> creatLocalGraph(Graph<string> g)
+{
+
+    g.addEdge("Chuadanga", "Meherpur", false);
+    g.addEdge("Chuadanga", "Alamdanga", false);
+    g.addEdge("Alamdanga", "Kushtia", false);
+    g.addEdge("Meherpur", "Kushtia", false);
+    g.addEdge("Kushtia", "Pabna", false);
+    g.addEdge("Pabna", "Rajshahi", false);
+    g.addEdge("Chuadanga", "Jhenaidah", false);
+    g.addEdge("Jhenaidah", "Kushtia", false);
+    g.addEdge("Jhenaidah", "Jashore", false);
+    g.addEdge("Jashore", "Khulna", false);
+    return g;
+}
+
+
 int main() {
-    int V;
-    cin >> V;
-    int edges;
-    cin >> edges;
-    Graph<int> graph(V);
-
-    for (int i = 0; i < 2 * edges; i++) {
-        int x, y;
-        cin >> x >> y;
-        graph.addEdge(x, y);
-    }
-
-    cout << "Traversing in BFS Method...." << endl;
-    int src;
-    cin >> src;
-    graph.bfs(src);
-    cout << endl << "Traversing in DFS Method...." << endl;
-
-    graph.dfs(src);
-
+    Graph<string> g(10);
+    g = creatLocalGraph(g);
+    g.bfs("Khulna");
     return 0;
 }
