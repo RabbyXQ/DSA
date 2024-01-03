@@ -87,5 +87,8 @@ int main() {
     Graph<string> g;
     g = createLocalGraph(g);
     g.allPath("Khulna", "Rajshahi");
+    // Khulna Jashore Jhenaidah Chuadanga Meherpur Kushtia Pabna Rajshahi 
+    // Khulna Jashore Jhenaidah Chuadanga Alamdanga Kushtia Pabna Rajshahi 
+    // Khulna Jashore Jhenaidah Kushtia Pabna Rajshahi 
     return 0;
 }
