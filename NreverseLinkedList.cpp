@@ -54,7 +54,6 @@ public:
         }
     }
 
-    // Recursive function to add multiple elements using variadic templates
     template<typename... Args>
     void addAll(Args... args) {
         addMultiple(args...);
@@ -110,14 +109,12 @@ private:
         return prev;
     }
 
-    // Recursively add multiple elements
     template<typename First, typename... Rest>
     void addMultiple(First first, Rest... rest) {
         add(first);
         addMultiple(rest...);
     }
 
-    // Base case for the recursive addMultiple function
     void addMultiple() {}
 };
 
